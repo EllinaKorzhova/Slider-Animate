@@ -29,20 +29,19 @@ class ViewController: UIViewController {
     }
     
     func setConstraints(){
-        let marginsGuide = view.layoutMarginsGuide
         NSLayoutConstraint.activate([
-            animationView.topAnchor.constraint(equalTo: marginsGuide.topAnchor, constant: 50),
-        animationView.leadingAnchor.constraint(equalTo: marginsGuide.leadingAnchor),
-            animationView.heightAnchor.constraint(equalToConstant: 70),
-            animationView.widthAnchor.constraint(equalTo: animationView.heightAnchor),
-    
-            slider.topAnchor.constraint(equalTo: animationView.bottomAnchor, constant: 50),
-            slider.leadingAnchor.constraint(equalTo: marginsGuide.leadingAnchor),
-            slider.trailingAnchor.constraint(equalTo: marginsGuide.trailingAnchor),
+            animationView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100),
+                        animationView.leftAnchor.constraint(equalTo: view.layoutMarginsGuide.leftAnchor),
+                        animationView.heightAnchor.constraint(equalToConstant: 70),
+                      animationView.widthAnchor.constraint(equalToConstant: 70),
+                        
+                        slider.topAnchor.constraint(equalTo: animationView.bottomAnchor, constant: 50),
+                        slider.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
+                        slider.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor)
             ])
     }
     @IBAction func sliderAction(_ sender: UISlider) {
-        animator.fractionComplete = CGFloat(sender.value) / 100
+        animator.fractionComplete = CGFloat(sender.value)
     }
     
     @IBAction func releaseSlider(_ sender: UISlider) {
